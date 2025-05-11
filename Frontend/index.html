@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alumni-Student Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+     <div class="logo">
+  <span class="logo-icon">🎓</span>
+  <span class="logo-text">LinkBack</span>
+</div>
+
+      <button id="toggle-sidebar" class="hamburger">
+  <i class="fas fa-bars"></i>
+</button>
+
+  
+
+      <ul class="nav">
+  <li class="active">
+    <a href="#home1">
+      <i class="fas fa-home"></i>
+      <span class="nav-text">Home</span>
+    </a>
+  </li>
+  <li>
+    <a href="#profile">
+      <i class="fas fa-user"></i>
+      <span class="nav-text">Profile</span>
+    </a>
+  </li>
+  <li>
+    <a href="#networks">
+      <i class="fas fa-network-wired"></i>
+      <span class="nav-text">Networks</span>
+    </a>
+  </li>
+  <li>
+    <a href="#forum">
+      <i class="fas fa-comments"></i>
+      <span class="nav-text">Forum</span>
+    </a>
+  </li>
+  <li>
+    <a href="#event">
+      <i class="fas fa-calendar-alt"></i>
+      <span class="nav-text">Events</span>
+    </a>
+  </li>
+  <li>
+    <a href="#framework">
+      <i class="fas fa-layer-group"></i>
+      <span class="nav-text">Frame Works</span>
+    </a>
+  </li>
+</ul>
+
+      
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <input class="search-button" type="text" placeholder=" &#128269; search.......">
+        <div class="user">
+          <img src="https://i.pravatar.cc/40" alt="User" />
+          <span>Jon Deek</span>
+        </div>
+      </header>
+
+     
+
+<!--Main2-section-->
+
+<div id="content">
+
+</div>
+
+    </main>
+  </div>
+
+<script>const toggleBtn = document.getElementById('toggle-sidebar');
+const container = document.querySelector('.container');
+
+toggleBtn.addEventListener('click', () => {
+  container.classList.toggle('sidebar-collapsed');
+});
+
+
+// Active class switch
+const navLinks = document.querySelectorAll('.nav li');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.forEach(item => item.classList.remove('active'));
+    link.classList.add('active');
+  });
+});
+
+
+// CONNECTIONS 
+
+    const input = document.getElementById("messageInput");
+    const messagesDiv = document.getElementById("messages");
+    let isLeft = true;
+
+    input.addEventListener("keypress", function (e) {
+      if (e.key === "Enter" && input.value.trim() !== "") {
+        const msg = document.createElement("div");
+        msg.className = "msg " + (isLeft ? "left" : "right");
+        msg.innerText = input.value.trim();
+        messagesDiv.appendChild(msg);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        input.value = "";
+        isLeft = !isLeft;
+      }
+    });
+
+    // HOME
+
+     const popup = document.getElementById("popup");
+    const popupText = document.getElementById("popup-text");
+    const discussBtns = document.querySelectorAll(".discuss-btn");
+    const likeBtns = document.querySelectorAll(".like-btn");
+    const dislikeBtns = document.querySelectorAll(".dislike-btn");
+
+    // Handle discuss button click
+    discussBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const content = btn.closest(".card-home").getAttribute("data-content");
+        popupText.textContent = content;
+        popup.classList.add("active");
+      });
+    });
+
+    // Handle like button click
+    likeBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("liked");
+      });
+    });
+
+    // Handle dislike button click
+    dislikeBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        btn.classList.toggle("disliked");
+      });
+    });
+
+    function closePopup() {
+      popup.classList.remove("active");
+    }</script>
+<script>const routes = {
+    home: 'home1.html',
+    forum: 'forum.html',
+    profile: 'profile.html',
+    event: 'event.html',
+    framework: 'framework.html',
+    networks: 'networks.html',
+  };
+  
+  function navigate(pageName) {
+    location.hash = pageName; 
+  }
+  
+  function loadPage() {
+    const hash = location.hash.slice(1); 
+    const page = routes[hash] || routes['home']; 
+    fetch(page)
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById('content').innerHTML = data;
+      })
+      .catch(() => {
+        document.getElementById('content').innerHTML = '<h2>😢 Page Not Found</h2>';
+      });
+  }
+  
+  window.addEventListener('hashchange', loadPage);
+  window.addEventListener('load', loadPage);
+  </script>
+ <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Blog Hub</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    /* Smooth scrolling with offset for sticky navbar */
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px; /* Adjust according to navbar height */
+    }
+
+    body {
+      background-color: #f9f7ff;
+      color: #2e2e2e;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #6a0dad;
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    .navbar h1 {
+      font-size: 1.8rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: #8a2be2;
+      transform: scale(1.05);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .blog-section {
+      margin-bottom: 3rem;
+    }
+
+    .blog-section h2 {
+      color: #6a0dad;
+      margin-bottom: 1rem;
+      font-size: 1.6rem;
+    }
+
+    .blog-card {
+      background: white;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border-left: 5px solid #6a0dad;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(106, 13, 173, 0.05);
+    }
+
+    .blog-card h3 {
+      margin-bottom: 0.5rem;
+      color: #4b007d;
+    }
+
+    .blog-card a {
+      text-decoration: none;
+      color: #8a2be2;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+
+    .blog-card a:hover {
+      color: #6a0dad;
+    }
+
+    footer {
+      text-align: center;
+      background-color: #6a0dad;
+      color: white;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1>BLOGS</h1>
+      <ul class="nav-links">
+        <li><a href="#dsa">DSA</a></li>
+        <li><a href="#web">Web Dev</a></li>
+        <li><a href="#system">System Design</a></li>
+        <li><a href="#interview">Interview Tips</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="blog-section" id="dsa">
+      <h2>📘 DSA Blogs</h2>
+      <div class="blog-card">
+        <h3>Mastering Binary Search</h3>
+        <p>A guide to binary search techniques and interview problems with code examples.</p>
+        <a href="#">Read more →</a>
+      </div>
+      <div class="blog-card">
+        <h3>Dynamic Programming Made Easy</h3>
+        <p>Breakdown of top-down and bottom-up approaches with real-world problems.</p>
+        <a href="#">Read more →</a>
+      </div>
+    </section>
+
+    <section class="blog-section" id="web">
+      <h2>🌐 Web Development</h2>
+      <div class="blog-card">
+        <h3>Building Responsive Layouts</h3>
+        <p>Learn Flexbox, Grid, and how to design mobile-first layouts.</p>
+        <a href="#">Read more →</a>
+      </div>
+      <div class="blog-card">
+        <h3>React vs Vanilla JS</h3>
+        <p>When to use frameworks and when plain JavaScript is enough.</p>
+        <a href="#">Read more →</a>
+      </div>
+    </section>
+
+    <section class="blog-section" id="system">
+      <h2>🛠️ System Design</h2>
+      <div class="blog-card">
+        <h3>Scalable Chat App Architecture</h3>
+        <p>Understand pub-sub, sockets, and load balancing in chat systems.</p>
+        <a href="#">Read more →</a>
+      </div>
+    </section>
+
+    <section class="blog-section" id="interview">
+      <h2>🎯 Interview Tips</h2>
+      <div class="blog-card">
+        <h3>Behavioral Questions You Must Prepare</h3>
+        <p>Top STAR-based questions and how to answer them with confidence.</p>
+        <a href="#">Read more →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Tech Blog Hub</p>
+  </footer>
+</body>
+</html>

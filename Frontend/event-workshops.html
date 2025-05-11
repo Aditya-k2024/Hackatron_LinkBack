@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .header-event {
+      background-color: #0f172a;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      height: 110px;
+    }
+
+    .header-event-content {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .header-event h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    .header-event p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .nav-links {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #38bdf8;
+    }
+
+    .div-event-btn {
+      width: 100%;
+      height: 60px;
+    }
+
+    .btn-events {
+      height: 50px;
+      width: 180px;
+      border-radius: 20px;
+      margin-top: 5px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: #5613e7;
+      border-color: #5613e7;
+
+    }
+
+    .btn-events:hover {
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow:
+        0 0 10px rgba(45, 26, 252, 0.4),
+        0 0 10px rgba(45, 26, 252, 0.4),
+        0 0 10px rgba(45, 26, 252, 0.4);
+      transform: scale(1.05);
+    }
+
+
+    .events-section {
+      flex: 1;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .events-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      width: 100%;
+      max-width: 1400px;
+    }
+
+    .event-card {
+      background-color: white;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 510px;
+      border: 3px;
+      border-radius: 20px;
+      /* border-image: linear-gradient(135deg, #6366f1, #ec4899, #f59e0b) 1;  */
+      box-shadow:
+        0 0 10px rgba(45, 26, 252, 0.4),
+        0 0 10px rgba(45, 26, 252, 0.4),
+        0 0 10px rgba(45, 26, 252, 0.4);
+    }
+
+    /* Optional: Add an additional glowing effect on hover */
+    .event-card:hover {
+      transform: scale(1.05);
+      min-height: 500px;
+      box-shadow:
+        0 0 10px rgba(45, 26, 252, 0.4),
+        0 0 10px rgba(45, 26, 252, 0.4),
+        0 0 10px rgba(45, 26, 252, 0.4);
+    }
+
+
+
+    .event-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .event-details {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      position: relative;
+    }
+
+    .event-details h3 {
+      font-size: 1.5em;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      opacity: 0;
+      visibility: hidden;
+      max-height: 0;
+      color: #475569;
+      font-size: 1em;
+      line-height: 1.6;
+      transition: opacity 0.4s ease, max-height 0.4s ease;
+    }
+
+    /* Only on hover, show description for the hovered card */
+    .event-card:hover .description {
+      opacity: 1;
+      visibility: visible;
+      max-height: 500px;
+      margin-bottom: 10px;
+    }
+
+    .event-details .date {
+      margin-top: auto;
+      font-weight: 600;
+      color: #2563eb;
+      font-size: 1em;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .footer-event {
+      background-color: #0f172a;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.95em;
+      margin-top: auto;
+    }
+
+    @media screen and (max-width: 600px) {
+      .header-event h1 {
+        font-size: 2em;
+      }
+
+      .events-section {
+        padding: 40px 20px;
+      }
+    }
+
+    .btn-events1 {
+      height: 50px;
+      width: 180px;
+      border-radius: 20px;
+      margin-top: 5px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-weight: 800;
+      font-size: 16px;
+      color: white;
+      background-color: #5613e7;
+      border-color: #5613e7;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <header class="header-event">
+      <div class="header-event-content">
+        <h1 style="margin-top: -40px;">🎓 Alumni Connect — Events</h1>
+        <p>Explore our upcoming events, conferences, and workshops designed to empower, network, and grow together!</p>
+
+      </div>
+    </header>
+    <div class="div-event-btn">
+      <nav>
+        <ul class="nav-links" style="margin-top: 20px; margin-bottom: -30px;">
+          <button class="btn-events">Upcoming Events</button>
+          <button class="btn-events1">Workshops</button>
+          <button class="btn-events">Company Events</button>
+          <button class="btn-events">Past Events</button>
+          <button class="btn-events">Saved Events</button>
+        </ul>
+      </nav>
+    </div>
+    <section class="events-section">
+      <div class="events-container">
+
+        <!-- Card 1 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/3184325/pexels-photo-3184325.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Event 1" class="event-image">
+          <div class="event-details">
+            <h3>BITians Connect '25</h3>
+            <div class="description">
+              <ul>
+                <li>Reconnect with your batchmates</li>
+                <li>Networking sessions with seniors & juniors</li>
+                <li>Inspiring alumni talks</li>
+                <li>Fun games & memories to cherish</li>
+              </ul>
+            </div>
+            <div class="date">📍 Delhi • 📅 June 15, 2025</div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/1181406/pexels-photo-1181406.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Event 2" class="event-image">
+          <div class="event-details">
+            <h3>Tech Rewind 2025</h3>
+            <div class="description">
+              <ul>
+                <li>Panel discussion on tech evolution</li>
+                <li>Explore how BIT alumni led innovations</li>
+                <li>Interactive Q&A with industry experts</li>
+                <li>Tech showcase by student startups</li>
+              </ul>
+            </div>
+            <div class="date">📍 Bangalore • 📅 July 8, 2025</div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/1704120/pexels-photo-1704120.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Event 3" class="event-image">
+          <div class="event-details">
+            <h3>Startup Tales</h3>
+            <div class="description">
+              <ul>
+                <li>Success stories from BIT entrepreneurs</li>
+                <li>Pitch your startup to alumni investors</li>
+                <li>Build your cofounder network</li>
+                <li>Startup workshop & mentorship</li>
+              </ul>
+            </div>
+            <div class="date">📍 Hyderabad • 📅 August 10, 2025</div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/2619493/pexels-photo-2619493.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Event 4" class="event-image">
+          <div class="event-details">
+            <h3>Alumni Sports League</h3>
+            <div class="description">
+              <ul>
+                <li>Cricket, Football, Badminton tournaments</li>
+                <li>Form teams by batch or city</li>
+                <li>Winner gets BIT Alumni Cup</li>
+                <li>Snacks & reunion party post-event</li>
+              </ul>
+            </div>
+            <div class="date">📍 Kolkata • 📅 August 30, 2025</div>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/270348/pexels-photo-270348.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Event 5" class="event-image">
+          <div class="event-details">
+            <h3>Global BIT Meet</h3>
+            <div class="description">
+              <ul>
+                <li>Alumni flying in from 15+ countries</li>
+                <li>2-day event with keynote talks</li>
+                <li>BIT global alumni awards ceremony</li>
+                <li>BIT culture & food carnival</li>
+              </ul>
+            </div>
+            <div class="date">📍 London • 📅 September 20–21, 2025</div>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/1181313/pexels-photo-1181313.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Event 6" class="event-image">
+          <div class="event-details">
+            <h3>Career Fair & Expo</h3>
+            <div class="description">
+              <ul>
+                <li>Meet 40+ companies hiring from BIT</li>
+                <li>Resume tips, mock interviews & mentoring</li>
+                <li>Alumni referrals on the spot</li>
+                <li>Free entry for registered alumni</li>
+              </ul>
+            </div>
+            <div class="date">📍 Mumbai • 📅 October 12, 2025</div>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/2608516/pexels-photo-2608516.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Leadership Summit" class="event-image">
+          <div class="event-details">
+            <h3>Leadership Summit 2025</h3>
+            <div class="description">
+              <ul>
+                <li>Speakers from Fortune 500 companies</li>
+                <li>Workshops on team building & strategy</li>
+                <li>Networking luncheons and breakout sessions</li>
+                <li>Limited in-person seats</li>
+              </ul>
+            </div>
+            <div class="date">📍 Chennai • 📅 November 1, 2025</div>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Developer Day" class="event-image">
+          <div class="event-details">
+            <h3>Developer Day</h3>
+            <div class="description">
+              <ul>
+                <li>Code along with expert developers</li>
+                <li>Focus on JavaScript & React ecosystems</li>
+                <li>Hands-on projects and giveaways</li>
+                <li>Free swag and certificates</li>
+              </ul>
+            </div>
+            <div class="date">📍 Online • 📅 November 20, 2025</div>
+          </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/1181371/pexels-photo-1181371.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Mentorship Meetup" class="event-image">
+          <div class="event-details">
+            <h3>Alumni Mentorship Circle</h3>
+            <div class="description">
+              <ul>
+                <li>Connect with BIT alumni from your domain</li>
+                <li>Group and 1-on-1 mentorship options</li>
+                <li>Monthly sessions, real career guidance</li>
+                <li>Sign-up required for access</li>
+              </ul>
+            </div>
+            <div class="date">📍 Online • 📅 Starting December 2025</div>
+          </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/6334096/pexels-photo-6334096.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Hackathon" class="event-image">
+          <div class="event-details">
+            <h3>BIT Global Hackathon</h3>
+            <div class="description">
+              <ul>
+                <li>48-hour coding marathon for all skill levels</li>
+                <li>Cash prizes, internships & swag</li>
+                <li>Mentorship and API access</li>
+                <li>Free registration for BIT alumni/students</li>
+              </ul>
+            </div>
+            <div class="date">📍 Online • 📅 December 15–17, 2025</div>
+          </div>
+        </div>
+
+        <!-- Card 11 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Financial Literacy" class="event-image">
+          <div class="event-details">
+            <h3>Finance for Young Professionals</h3>
+            <div class="description">
+              <ul>
+                <li>Learn investing, budgeting & tax-saving tips</li>
+                <li>Interactive webinars with CA & finance coaches</li>
+                <li>Free budgeting tools & templates</li>
+                <li>Perfect for first-time earners</li>
+              </ul>
+            </div>
+            <div class="date">📍 Online • 📅 January 5, 2026</div>
+          </div>
+        </div>
+
+        <!-- Card 12 -->
+        <div class="event-card">
+          <img
+            src="https://images.pexels.com/photos/3184298/pexels-photo-3184298.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+            alt="Panel Meetup" class="event-image">
+          <div class="event-details">
+            <h3>Women in Tech Meetup</h3>
+            <div class="description">
+              <ul>
+                <li>Panel with leading women engineers from BIT</li>
+                <li>Mentoring for young women in STEM</li>
+                <li>Q&A and leadership journey stories</li>
+                <li>Open to all genders</li>
+              </ul>
+            </div>
+            <div class="date">📍 Pune • 📅 February 10, 2026</div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </section>
+
+    <footer class="footer-event">
+      © 2025 Alumni Connect. All rights reserved.
+    </footer>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interview Prep Hub</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px; /* To prevent section titles from being hidden under sticky navbar */
+    }
+
+    body {
+      background-color: #f9f7ff;
+      color: #2e2e2e;
+    }
+
+    header {
+      background-color: #6a0dad;
+      color: white;
+      padding: 1rem 0;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    .navbar h1 {
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: #8a2be2;
+      transform: scale(1.05);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      border-left: 6px solid #6a0dad;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(106, 13, 173, 0.1);
+    }
+
+    .card h2 {
+      color: #6a0dad;
+      margin-bottom: 1rem;
+    }
+
+    .card a {
+      color: #8a2be2;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #6a0dad;
+      color: white;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1>Interview Prep</h1>
+      <ul class="nav-links">
+        <li><a href="#dsa">DSA</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#mock">Mock</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="card" id="dsa">
+      <h2>📘 Data Structures & Algorithms</h2>
+      <ul>
+        <li>Learn Patterns: Sliding Window, Binary Search, DP</li>
+        <li>Platforms: <a href="https://leetcode.com" target="_blank">LeetCode</a>, <a href="https://geeksforgeeks.org" target="_blank">GFG</a></li>
+        <li>Focus Topics: Arrays, Linked Lists, Trees, Graphs</li>
+      </ul>
+    </section>
+
+    <section class="card" id="projects">
+      <h2>💡 Projects</h2>
+      <ul>
+        <li>Build at least 2 major projects (e.g., portfolio, redaction tool)</li>
+        <li>Include backend + frontend if full-stack</li>
+        <li>Explain tech stack, problem solved, personal contribution</li>
+      </ul>
+    </section>
+
+    <section class="card" id="resume">
+      <h2>📄 Resume Tips</h2>
+      <ul>
+        <li>One page, clear layout</li>
+        <li>Use action words + numbers ("Reduced time by 40%")</li>
+        <li>Highlight achievements, internships, and core skills</li>
+      </ul>
+    </section>
+
+    <section class="card" id="mock">
+      <h2>🧑‍💻 Mock Interviews</h2>
+      <ul>
+        <li>Use <a href="https://pramp.com" target="_blank">Pramp</a> or pair with friends</li>
+        <li>Record yourself explaining solutions</li>
+        <li>Focus on clarity, problem-solving, and confidence</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>🗣️ Behavioral Interview Preparation</h2>
+      <ul>
+        <li>Use <a href="https://www.biginterview.com/" target="_blank">BigInterview</a> for behavioral practices</li>
+        <li>Talk about a time you faced a challenge</li>
+        <li>How do you handle team conflict?</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Interview Prep Hub | Designed by Deepak Raj</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Alumni Sign Up</title>
+  <style>
+    /* Same styling as before */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #e2b0ff, #f9a2dc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .signup-wrapper {
+      width: 90%;
+      max-width: 1000px;
+      height: 90vh;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      animation: fadeInUp 0.8s ease;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h2 { text-align: center; margin-bottom: 20px; color: #5e00b3; }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      height: 100%;
+    }
+    .form-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    label { margin-bottom: 14px; color: #444; font-weight: 500; }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    input:focus, textarea:focus {
+      border-color: #9c27b0;
+      outline: none;
+      box-shadow: 0 0 5px rgba(156, 39, 176, 0.3);
+    }
+    textarea { resize: vertical; }
+    button {
+      margin-top: 20px;
+      padding: 14px;
+      border: none;
+      border-radius: 6px;
+      background-color: #9c27b0;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    button:hover { background-color: #7b1fa2; }
+    button:active { transform: scale(0.98); }
+    @media (max-width: 768px) {
+      .form-grid { grid-template-columns: 1fr; overflow-y: auto; height: auto; }
+      .signup-wrapper { height: auto; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-wrapper">
+    <h2>Alumni Sign Up</h2>
+    <form id="alumniForm">
+      <div class="form-grid">
+        <div class="form-section">
+          <div>
+            <label>Full Name: <input type="text" name="name" required /></label>
+            <label>Email: <input type="email" name="email" required /></label>
+            <label>Password: <input type="password" name="password" required /></label>
+            <label>Confirm Password: <input type="password" name="confirmPassword" required /></label>
+            <label>Graduation Year: <input type="number" name="graduationYear" min="1950" max="2035" required /></label>
+            <label>Branch: <input type="text" name="branch" required /></label>
+          </div>
+        </div>
+        <div class="form-section">
+          <div>
+            <label>Current Job Role: <input type="text" name="currentJob" /></label>
+            <label>Company: <input type="text" name="company" /></label>
+            <label>LinkedIn Profile: <input type="url" name="linkedin" /></label>
+            <label>GitHub Profile: <input type="url" name="github" /></label>
+            <label>Bio: <textarea name="bio" rows="5"></textarea></label>
+          </div>
+          <button type="submit">Register</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("alumniForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = {};
+      const inputs = this.querySelectorAll("input, textarea");
+
+      inputs.forEach((input) => {
+        formData[input.name] = input.value;
+      });
+
+      if (formData.password !== formData.confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      // Simulate successful registration (e.g., could be replaced with a fetch POST)
+      alert("Alumni Registered Successfully!");
+
+      // ✅ Redirect to dashboard.html
+      window.location.href = "dashboard.html";
+    });
+  </script>
+</body>
+</html>

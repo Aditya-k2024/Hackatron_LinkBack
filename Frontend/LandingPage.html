@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkBack Hero</title>
+
+  <!-- Feather Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <!-- CSS Styles -->
+ <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #7e5bef, #bc77ed, #4299e1);
+            color: white;
+
+        }
+
+        /* Top bar */
+        .top-bar {
+            position: absolute;
+            top: 1.2rem;
+            right: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-area i {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-right: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .icon-area i:hover {
+            color: #e2e8f0;
+        }
+
+        .top-bar button {
+            padding: 0.5rem 1rem;
+            font-weight: 600;
+            border-radius: 0.4rem;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .top-bar button:hover {
+            background: white;
+            color: #bc77ed;
+        }
+
+        /* Hero section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1.25rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            line-height: 1.15;
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2), -2px -2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            margin-top: 1rem;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: #e2e8f0;
+            max-width: 42rem;
+            margin-inline: auto;
+        }
+
+        .buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .buttons button {
+            padding: 0.75rem 1.6rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 0.55rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .buttons .primary {
+            background: #fff;
+            color: #bc77ed;
+        }
+
+        .buttons .primary:hover {
+            background: #edf2f7;
+        }
+
+        .buttons .secondary {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+
+        .buttons .secondary:hover {
+            background: #fff;
+            color: #bc77ed;
+        }
+    </style>
+</head>
+
+<body>
+  <!-- Top Right Bar -->
+  <div class="top-bar">
+    <div class="icon-area">
+      <i data-feather="bell"></i>
+      <i data-feather="user"></i>
+    </div>
+    <button id="signInBtn">Sign In</button>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>LinkBack</h1>
+      <p>
+        Build your professional identity, connect with peers, and grow your network—without the clutter or complexity.
+      </p>
+      <div class="buttons">
+        <button class="primary" onclick="window.location.href='signup.html'">Get Started</button>
+        <button class="secondary" onclick="window.open('https://docs.example.com')">View Docs</button>
+      </div>
+      <img src="Logo.png" alt="Logo" class="logo" />
+    </div>
+  </section>
+
+  <script>
+    feather.replace();
+
+    // Redirect to loginpage.html on Sign In click
+    document.getElementById("signInBtn").addEventListener("click", function () {
+      window.location.href = "loginpage.html";
+    });
+  </script>
+</body>
+
+</html>
