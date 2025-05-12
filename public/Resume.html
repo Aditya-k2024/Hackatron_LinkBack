@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepak Raj | Resume</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px; /* height of sticky header */
+    }
+
+    body {
+      background-color: #f8f8fc;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #6a0dad;
+      color: white;
+      padding: 1.2rem 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+    }
+
+    .navbar h1 {
+      font-size: 1.6rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: #a259ff;
+      transform: scale(1.05);
+    }
+
+    a {
+      color: #6a0dad;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: white;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: white;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .card h2 {
+      color: #6a0dad;
+      margin-bottom: 1rem;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skills-list span {
+      background: #f0e5ff;
+      color: #6a0dad;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      font-size: 0.95rem;
+    }
+
+    .project h3 {
+      color: #4b0082;
+    }
+
+    .project a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+
+    .project a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    footer {
+      background-color: #6a0dad;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    #contact a {
+      color: #6a0dad;
+      font-weight: 500;
+    }
+
+    #contact a:hover {
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <h1>Deepak Raj</h1>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="card">
+      <h2>About Me</h2>
+      <p>💼 Full Stack Developer Overview:
+        A Full Stack Developer is a versatile software professional skilled in both frontend (client-side) and backend
+        (server-side) development. They design, build, and maintain entire web applications from end to end, ensuring
+        seamless integration between the user interface and the underlying logic, database, and APIs.</p>
+    </section>
+
+    <section id="skills" class="card">
+      <h2>Skills</h2>
+      <div class="skills-list">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>Flask</span>
+        <span>Python</span>
+        <span>C++</span>
+        <span>MongoDB</span>
+        <span>SQL</span>
+      </div>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Projects</h2>
+      <div class="project">
+        <h3>🔒 PDF Redaction Tool</h3>
+        <p>AI-based tool to detect and redact PII from PDFs using OCR and FastAPI.</p>
+        <p><strong>Tech:</strong> FastAPI, MongoDB, OCR</p>
+        <a href="#">GitHub</a>
+      </div>
+
+      <div class="project">
+        <h3>💻 Portfolio Website</h3>
+        <p>Responsive portfolio with a modern UI using HTML and CSS.</p>
+        <p><strong>Tech:</strong> HTML, CSS</p>
+        <a href="#">Live Demo</a>
+      </div>
+    </section>
+
+    <section id="education" class="card">
+      <h2>Education</h2>
+      <p><strong>BIT Sindri</strong><br />B.Tech in Computer Science (2022–2026)</p>
+    </section>
+
+    <section id="certifications" class="card">
+      <h2>Certifications & Achievements</h2>
+      <ul>
+        <li>🏆 1st in CodeCamp 3.0 – C++ Event by HnCC</li>
+        <li>🏅 Finalist – Hackatron PDF Redaction Project</li>
+        <li>📜 Mimamsa 2025 – Participant, IISER Pune</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:deepak@example.com">deepak@example.com</a></p>
+      <p>LinkedIn: <a href="#">linkedin.com/in/deepakraj</a></p>
+      <p>GitHub: <a href="#">github.com/deepakraj</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 LinkBack. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

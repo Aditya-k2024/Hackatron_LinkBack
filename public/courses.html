@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Cards Dashboard</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: rgb(210, 180, 231);
+      background-size: 400% 400%;
+      animation: blueGradientShift 20s ease infinite;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @keyframes blueGradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      padding: 4rem 5rem;
+      max-width: 1300px;
+      width: 100%;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 1.2rem;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 25px 35px rgba(0, 0, 0, 0.3);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+      z-index: 1;
+      transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+    }
+
+    .card:hover::before {
+      background-color: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+    }
+
+    .card-info {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 0, 0.816);
+      transition: color 0.4s;
+    }
+
+    .description {
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      font-size: 0.92rem;
+      color: #eee;
+      margin: 0.4rem 0 0.9rem 0;
+      line-height: 1.4rem;
+      transition: opacity 0.4s ease, max-height 0.4s ease;
+    }
+
+    .card:hover .description {
+      opacity: 1;
+      max-height: 250px;
+    }
+
+    .desc-item {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 0.2rem;
+      cursor: pointer;
+    }
+
+    .desc-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 0;
+      background-color: #ffd700;
+      transition: width 0.4s ease;
+    }
+
+    .desc-item:hover::after {
+      width: 100%;
+    }
+
+    @media (max-width: 1024px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 2rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+      }
+    }
+
+    .core-eng {
+      background-image: url('https://cdn.pixabay.com/photo/2022/02/11/12/12/pforphoto-7007231_640.jpg');
+    }
+
+    .cs-it {
+      background-image: url('https://thumbs.dreamstime.com/b/concept-thinking-background-brain-cpu-mind-series-technology-symbols-subject-computer-science-artificial-concept-117062986.jpg');
+    }
+
+    .data-ai {
+      background-image: url('https://softwaredevelopersindia.com/new-design/img/ai-ml/robotic.png');
+    }
+
+    .emerging {
+      background-image: url('https://liveyourbrand.in/wp-content/uploads/2023/05/Emerging-Fields-in-Engineering-Education-Coimbatore-Colleges-1140x760.jpg');
+    }
+
+    .soft-skills {
+      background-image: url('https://imageio.forbes.com/specials-images/imageserve/631ee877cec6e2d404d7038e/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds');
+    }
+  </style>
+</head>
+
+<body>
+  <div class="grid">
+    <div class="card core-eng">
+      <div class="card-info">
+        <p class="title">🔧 Core Engineering Subjects</p>
+        <div class="description">
+          <div class="desc-item">Engineering Mathematics</div><br />
+          <div class="desc-item">Engineering Mechanics</div><br />
+          <div class="desc-item">Thermodynamics</div><br />
+          <div class="desc-item">Fluid Mechanics</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card cs-it">
+      <div class="card-info">
+        <p class="title">💻 Computer Science & IT</p>
+        <div class="description">
+          <div class="desc-item">Data Structures & Algorithms</div><br />
+          <div class="desc-item">Object-Oriented Programming</div><br />
+          <div class="desc-item">Operating Systems</div><br />
+          <div class="desc-item">Computer Networks</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card data-ai">
+      <div class="card-info">
+        <p class="title">🤖 Data Science & AI/ML</p>
+        <div class="description">
+          <div class="desc-item">Data Science Fundamentals</div><br />
+          <div class="desc-item">Machine Learning</div><br />
+          <div class="desc-item">Deep Learning</div><br />
+          <div class="desc-item">Natural Language Processing</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card emerging">
+      <div class="card-info">
+        <p class="title">🌐 Emerging Fields</p>
+        <div class="description">
+          <div class="desc-item">Internet of Things (IoT)</div><br />
+          <div class="desc-item">Cybersecurity</div><br />
+          <div class="desc-item">Blockchain Fundamentals</div><br />
+          <div class="desc-item">Cloud Computing</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card soft-skills">
+      <div class="card-info">
+        <p class="title">🗣️ Soft Skills</p>
+        <div class="description">
+          <div class="desc-item">Public Speaking</div><br />
+          <div class="desc-item">Entrepreneurship Basics</div><br />
+          <div class="desc-item">Critical Thinking & Problem Solving</div><br />
+          <div class="desc-item">Presentation Skills</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

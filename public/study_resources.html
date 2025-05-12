@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Resources</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #f9f7ff;
+            color: #2e2e2e;
+            line-height: 1.6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: #6a0dad;
+            color: white;
+            padding: 1rem 0;
+        }
+
+        .navbar {
+            max-width: 1100px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1rem;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .nav-links>li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #8a2be2;
+            transform: scale(1.05);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #6a0dad;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: white;
+        }
+
+        .nav-links li:hover .dropdown-content {
+            display: block;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .resource-section {
+            margin-bottom: 3rem;
+        }
+
+        .resource-section h2 {
+            color: #6a0dad;
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .resource-list {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(106, 13, 173, 0.05);
+        }
+
+        .resource-list ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+
+        .resource-list a {
+            text-decoration: none;
+            color: #8a2be2;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .resource-list a:hover {
+            color: #6a0dad;
+        }
+
+        footer {
+            text-align: center;
+            background-color: #6a0dad;
+            color: white;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <h1>📚 Study Resources</h1>
+            <ul class="nav-links">
+                <li>
+                    <a href="#">Topics ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#dsa">DSA</a>
+                        <a href="#webdev">Web Dev</a>
+                        <a href="#core">Core Engineering</a>
+                        <a href="#maths">Mathematics</a>
+                        <a href="#management">Management</a>
+                        <a href="#aptitude">Aptitude & Reasoning</a>
+                        <a href="#communication">Communication Skills</a>
+                        <a href="#electronics">Electronics & Electrical</a>
+                        <a href="#mechanical">Mechanical Engineering</a>
+                        <a href="#competitive">Competitive Exams</a>
+                    </div>
+                </li>
+                <li><a href="index.html">🏠 Home</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="resource-section" id="dsa">
+            <h2>📘 DSA Notes</h2>
+            <div class="resource-list">
+                <ul>
+                    <li><a href="#">Introduction to DSA</a></li>
+                    <li><a href="#">Arrays and Strings</a></li>
+                    <li><a href="#">Linked Lists</a></li>
+                    <li><a href="#">Stacks and Queues</a></li>
+                    <li><a href="#">Trees and Graphs</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="resource-section" id="webdev">
+            <h2>🌐 Web Development</h2>
+            <div class="resource-list">
+                <ul>
+                    <li><a href="#">HTML & CSS Basics</a></li>
+                    <li><a href="#">JavaScript Fundamentals</a></li>
+                    <li><a href="#">Frontend Frameworks (React, Angular)</a></li>
+                    <li><a href="#">Backend Development (Node.js, Express)</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="resource-section" id="core">
+            <h2>⚙️ Core Engineering Subjects</h2>
+            <div class="resource-list">
+                <ul>
+                    <li><a href="#">Mechanical Engineering Basics</a></li>
+                    <li><a href="#">Electrical Engineering Basics</a></li>
+                    <li><a href="#">Computer Science Engineering Basics</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="resource-section" id="maths">
+            <h2>➗ Mathematics</h2>
+            <div class="resource-list">
+                <ul>
+                    <li><a href="#">Calculus</a></li>
+                    <li><a href="#">Linear Algebra</a></li>
+                    <li><a href="#">Probability & Statistics</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="resource-section" id="management">
+            <h2>📈 Management</h2>
+            <div class="resource-list">
+                <ul>
+                    <li><a href="#">Principles of Management</a></li>
+                    <li><a href="#">Business Communication</a></li>
+                    <li><a href="#">Marketing Management</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="resource-section" id="aptitude">
+            <h2>🧠 Aptitude & Reasoning</h2>
+            <div class="resource-list">
+                <ul>
+                    <li><a href="#">Quantitative Aptitude</a></li>
+                    <li><a href="#">Logical Reasoning</a></li>
+                    <li><a href="#">Verbal Ability</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="resource-section" id="communication">
+            <h2>🗣️ Communication Skills</h2>
+            <div class="resource-list">
+                <ul>
+                    <li><a href="#">Public Speaking</a></li>
+                    <li><a href="#">Group Discussions</a></li>
+                    <li><a href="#">Interview Preparation</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="resource-section" id="electronics">
+            <h2>🔌 Electronics & Electrical</h2>
+            <div class="resource-list">
+                <ul>
+                    <li><a href="#">Circuit Theory</a></li>
+                    <li><a href="#">Control Systems</a></li>
+                    <li><a href="#">Signals & Systems</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="resource-section" id="mechanical">
+            <h2>🔧 Mechanical Engineering</h2>
+            <div class="resource-list">
+                <ul>
+                    <li><a href="#">Thermodynamics</a></li>
+                    <li><a href="#">Fluid Mechanics</a></li>
+                    <li><a href="#">Strength of Materials</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="resource-section" id="competitive">
+            <h2>🎓 Competitive Exams</h2>
+            <div class="resource-list">
+                <ul>
+                    <li><a href="#">GATE Preparation</a></li>
+                    <li><a href="#">GRE Preparation</a></li>
+                    <li><a href="#">CAT Preparation</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Study Resources | Designed by Team LinkBack</p>
+    </footer>
+</body>
+
+</html>

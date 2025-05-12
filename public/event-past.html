@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .header-event {
+            background-color: #0f172a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            height: 110px;
+        }
+
+        .header-event-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header-event h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
+
+        .header-event p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .nav-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-links li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: #38bdf8;
+        }
+
+        .div-event-btn {
+            width: 100%;
+            height: 60px;
+        }
+
+        .btn-events {
+            height: 50px;
+            width: 180px;
+            border-radius: 20px;
+            margin-top: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            color: #5613e7;
+            border-color: #5613e7;
+        }
+
+        .btn-events:hover {
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow:
+                0 0 10px rgba(45, 26, 252, 0.4),
+                0 0 10px rgba(45, 26, 252, 0.4),
+                0 0 10px rgba(45, 26, 252, 0.4);
+            transform: scale(1.05);
+        }
+
+
+        .events-section {
+            flex: 1;
+            padding: 60px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .event-card {
+            background-color: white;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            min-height: 510px;
+        }
+
+        /* Only on hover, expand this card */
+        .event-card:hover {
+            transform: scale(1.05);
+            min-height: 500px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .event-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-details {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .event-details h3 {
+            font-size: 1.5em;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .description {
+            opacity: 0;
+            visibility: hidden;
+            max-height: 0;
+            overflow: hidden;
+            color: #475569;
+            font-size: 1em;
+            line-height: 1.6;
+            transition: opacity 0.4s ease, max-height 0.4s ease;
+        }
+
+        /* Only on hover, show description for the hovered card */
+        .event-card:hover .description {
+            opacity: 1;
+            visibility: visible;
+            max-height: 500px;
+            margin-bottom: 10px;
+        }
+
+        .event-details .date {
+            margin-top: auto;
+            font-weight: 600;
+            color: #2563eb;
+            font-size: 1em;
+            white-space: normal;
+            word-break: break-word;
+        }
+
+        .footer-event {
+            background-color: #0f172a;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.95em;
+            margin-top: auto;
+        }
+
+        @media screen and (max-width: 600px) {
+            .header-event h1 {
+                font-size: 2em;
+            }
+
+            .events-section {
+                padding: 40px 20px;
+            }
+        }
+
+        .btn-events1 {
+            height: 50px;
+            width: 180px;
+            border-radius: 20px;
+            margin-top: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 800;
+            font-size: 16px;
+            color: white;
+            background-color: #5613e7;
+            border-color: #5613e7;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <header class="header-event">
+            <div class="header-event-content">
+                <h1 style="margin-top: -40px;">🎓 Alumni Connect — Events</h1>
+                <p>Explore our upcoming events, conferences, and workshops designed to empower, network, and grow
+                    together!</p>
+
+            </div>
+        </header>
+        <div class="div-event-btn">
+            <nav>
+                <ul class="nav-links" style="margin-top: 20px; margin-bottom: -30px;">
+                    <button class="btn-events">Upcoming Events</button>
+                    <button class="btn-events">Workshops</button>
+                    <button class="btn-events">Company Events</button>
+                    <button class="btn-events1">Past Events</button>
+                    <button class="btn-events">Saved Events</button>
+                </ul>
+            </nav>
+        </div>
+        <section class="events-section">
+            <div class="events-container">
+
+                <!-- Past Event 1 -->
+                <div class="event-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTatEnyBVb9zopu_SeQkq2kTtywdfCnInjcKw&s"
+                        alt="Platinum Jubilee" class="event-image">
+                    <div class="event-details">
+                        <h3>Platinum Jubilee Celebration</h3>
+                        <div class="description">
+                            <ul>
+                                <li>Commemoration of 75 years of BIT Sindri</li>
+                                <li>Grand alumni reunion with cultural performances</li>
+                                <li>Tech expos and student showcases</li>
+                                <li>Presence of distinguished alumni and dignitaries</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 BIT Sindri • 📅 February 2020</div>
+                    </div>
+                </div>
+
+                <!-- Past Event 2 -->
+                <div class="event-card">
+                    <img src="https://images.pexels.com/photos/167538/pexels-photo-167538.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+                        alt="Hackathon" class="event-image">
+                    <div class="event-details">
+                        <h3>HackBIT 2022 – 36 Hour Hackathon</h3>
+                        <div class="description">
+                            <ul>
+                                <li>100+ teams from across India participated</li>
+                                <li>Mentors from Google & Microsoft</li>
+                                <li>Live API challenges, real-time scoring</li>
+                                <li>Sponsored by IETE and Alumni Network</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 Virtual • 📅 April 2022</div>
+                    </div>
+                </div>
+
+                <!-- Past Event 3 -->
+                <div class="event-card">
+                    <img src="https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+                        alt="BIT Conclave" class="event-image">
+                    <div class="event-details">
+                        <h3>BIT Global Alumni Conclave</h3>
+                        <div class="description">
+                            <ul>
+                                <li>200+ alumni across 10 countries</li>
+                                <li>Keynote by NASA engineer & BIT alum</li>
+                                <li>Startup and mentorship sessions</li>
+                                <li>Launched Alumni Scholarships Fund</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 Ranchi • 📅 September 2019</div>
+                    </div>
+                </div>
+
+                <!-- Past Event 4 -->
+                <div class="event-card">
+                    <img src="https://images.pexels.com/photos/3171837/pexels-photo-3171837.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+                        alt="Silver Jubilee" class="event-image">
+                    <div class="event-details">
+                        <h3>Silver Jubilee Reunion – 1996 Batch</h3>
+                        <div class="description">
+                            <ul>
+                                <li>Grand return of the 1996 batch to campus</li>
+                                <li>Batch-wise tree plantation & cultural night</li>
+                                <li>Contribution to BIT's new library wing</li>
+                                <li>Emotional walk through hostel corridors</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 BIT Sindri • 📅 December 2021</div>
+                    </div>
+                </div>
+
+                <!-- Past Event 5 -->
+                <div class="event-card">
+                    <img src="https://images.pexels.com/photos/2774556/pexels-photo-2774556.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+                        alt="Placement Talk" class="event-image">
+                    <div class="event-details">
+                        <h3>Alumni Career Talk Series</h3>
+                        <div class="description">
+                            <ul>
+                                <li>Talks from Amazon, TCS, Flipkart employees</li>
+                                <li>Resume reviews and mock interviews</li>
+                                <li>Focused sessions by branch</li>
+                                <li>Organized by BITAA & Training Cell</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 Online • 📅 October 2021</div>
+                    </div>
+                </div>
+
+                <!-- Past Event 6 -->
+                <div class="event-card">
+                    <img src="https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+                        alt="BIT Run" class="event-image">
+                    <div class="event-details">
+                        <h3>BIT Marathon 2018</h3>
+                        <div class="description">
+                            <ul>
+                                <li>5K and 10K runs around the campus</li>
+                                <li>Health awareness by alumni doctors</li>
+                                <li>Winners awarded fitness bands</li>
+                                <li>Breakfast & certificate for all runners</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 BIT Sindri • 📅 January 2018</div>
+                    </div>
+                </div>
+
+                <!-- Past Event 7 -->
+                <div class="event-card">
+                    <img src="https://images.pexels.com/photos/1181400/pexels-photo-1181400.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+                        alt="Tech Night" class="event-image">
+                    <div class="event-details">
+                        <h3>Tech Night – Alumni Edition</h3>
+                        <div class="description">
+                            <ul>
+                                <li>Lightning talks from alumni in AI, IoT</li>
+                                <li>Live demo booths by alumni startups</li>
+                                <li>Collaboration zones & app showcase</li>
+                                <li>Co-hosted by BIT Innovation Cell</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 BIT Sindri • 📅 November 2022</div>
+                    </div>
+                </div>
+
+                <!-- Past Event 8 -->
+                <div class="event-card">
+                    <img src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+                        alt="Farewell" class="event-image">
+                    <div class="event-details">
+                        <h3>Final Year Farewell 2023</h3>
+                        <div class="description">
+                            <ul>
+                                <li>Emotional send-off to 2023 graduating batch</li>
+                                <li>Messages from professors & alumni</li>
+                                <li>Campus photo booth & memory wall</li>
+                                <li>Virtual presence of alumni from abroad</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 BIT Sindri • 📅 June 2023</div>
+                    </div>
+                </div>
+
+                <!-- Past Event 9 -->
+                <div class="event-card">
+                    <img src="https://images.pexels.com/photos/3182759/pexels-photo-3182759.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+                        alt="Webinar" class="event-image">
+                    <div class="event-details">
+                        <h3>Alumni Webinar on Product Management</h3>
+                        <div class="description">
+                            <ul>
+                                <li>Led by PMs from Google, Swiggy & Byju’s</li>
+                                <li>Insights on user research & roadmaps</li>
+                                <li>Internship opportunities discussed</li>
+                                <li>1000+ participants joined live</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 Online • 📅 July 2022</div>
+                    </div>
+                </div>
+
+                <!-- Past Event 10 -->
+                <div class="event-card">
+                    <img src="https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+                        alt="BIT Alumni Awards" class="event-image">
+                    <div class="event-details">
+                        <h3>BIT Alumni Excellence Awards</h3>
+                        <div class="description">
+                            <ul>
+                                <li>Recognized alumni in tech, service & education</li>
+                                <li>Awardees from 1975 to 2015 batches</li>
+                                <li>Live performance by BIT music club</li>
+                                <li>Organized by BITAA Dhanbad chapter</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 Dhanbad • 📅 February 2021</div>
+                    </div>
+                </div>
+
+                <!-- Past Event 11 -->
+                <div class="event-card">
+                    <img src="https://images.pexels.com/photos/3769020/pexels-photo-3769020.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+                        alt="Orientation" class="event-image">
+                    <div class="event-details">
+                        <h3>Freshers Orientation with Alumni</h3>
+                        <div class="description">
+                            <ul>
+                                <li>Welcoming 1st-year students to BIT culture</li>
+                                <li>Alumni motivational talk series</li>
+                                <li>Tips on internships & survival guides</li>
+                                <li>Organized by 3rd year students & alumni</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 BIT Sindri • 📅 August 2023</div>
+                    </div>
+                </div>
+
+                <!-- Past Event 12 -->
+                <div class="event-card">
+                    <img src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=600"
+                        alt="BIT Documentary" class="event-image">
+                    <div class="event-details">
+                        <h3>BIT Documentary Premiere</h3>
+                        <div class="description">
+                            <ul>
+                                <li>Short film on BIT’s history & legacy</li>
+                                <li>Documented by alumni media team</li>
+                                <li>Screened at main auditorium</li>
+                                <li>Open Q&A with the creators post-show</li>
+                            </ul>
+                        </div>
+                        <div class="date">📍 BIT Sindri • 📅 March 2020</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class=" footer-event">
+            © 2025 Alumni Connect. All rights reserved.
+        </footer>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Expandable Cards</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(210, 180, 231);
+            background-size: 400% 400%;
+            animation: blueGradientShift 20s ease infinite;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        @keyframes blueGradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: auto;
+            transition: opacity 0.4s ease;
+        }
+
+        .card {
+            position: relative;
+            height: 260px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 1.2rem;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.55);
+            z-index: 1;
+            transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+        }
+
+        .card:hover::before {
+            background-color: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+        }
+
+        .card-info {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.6rem;
+            letter-spacing: 0.05em;
+            color: rgba(255, 255, 0, 0.816);
+        }
+
+        .description {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            font-size: 0.92rem;
+            color: #eee;
+            margin: 0.4rem 0 0.9rem 0;
+            line-height: 1.4rem;
+            transition: opacity 0.4s ease, max-height 0.4s ease;
+        }
+
+        .card:hover .description {
+            opacity: 1;
+            max-height: 250px;
+        }
+
+        .desc-item {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 0.2rem;
+            cursor: pointer;
+        }
+
+        .desc-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            width: 0;
+            background-color: #ffd700;
+            transition: width 0.4s ease;
+        }
+
+        .desc-item:hover::after {
+            width: 100%;
+        }
+
+        /* Backgrounds */
+        .snake-robot {
+            background-image: url('https://cdn.pixabay.com/photo/2016/12/17/14/00/robot-1910142_1280.jpg');
+        }
+
+        .remote-car {
+            background-image: url('https://cdn.pixabay.com/photo/2015/05/07/11/02/remote-control-756089_1280.jpg');
+        }
+
+        /* Detail View */
+        .detail-view {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            color: white;
+            padding: 2rem;
+            overflow-y: auto;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .detail-view.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .detail-content {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .detail-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: yellow;
+        }
+
+        .detail-desc {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .close-btn {
+            background-color: #ff0066;
+            border: none;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: #e6005c;
+        }
+
+        .snake-robot {
+            background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRseFZkhL9SmOgnBcuKjs-8EGtw6xXlBw6O8w&s);
+
+        }
+
+        .remote-car {
+            background-image: url(https://snooplay.in/cdn/shop/files/SpeedFormulaRemoteControlledRacingCarToywithLightsandSprayeffect_Scale1-14_5.png?v=1688212424);
+            background-size: cover;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Grid View -->
+    <div class="grid" id="grid">
+        <div class="card snake-robot" data-title="Snake Robot"
+            data-details="The snake robot is a highly flexible and modular robot designed to mimic snake movements. It's used in tight spaces, disaster zones, and industrial inspections. It features advanced AI navigation and can adapt to different terrains with ease.">
+            <div class="card-info">
+                <p class="title">🤖 Snake Robot</p>
+                <div class="description ">
+                    <div class="desc-item">Flexible Movement</div><br />
+                    <div class="desc-item">Used in Search & Rescue</div><br />
+                    <div class="desc-item">AI Navigation</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card remote-car" data-title="Remote Control Car"
+            data-details="This Arduino-based remote control car can be operated wirelessly using an RC module. It features obstacle avoidance, speed control, and has been a favorite for robotics enthusiasts in learning basic electronics and mobility control.">
+            <div class="card-info">
+                <p class="title">🚗 Remote Control Car</p>
+                <div class="description ">
+                    <div class="desc-item">RC Controller</div><br />
+                    <div class="desc-item">Arduino-Based</div><br />
+                    <div class="desc-item">Obstacle Avoidance</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more cards here -->
+    </div>
+
+    <!-- Detail View -->
+    <div class="detail-view" id="detailView">
+        <div class="detail-content">
+            <h2 class="detail-title" id="detailTitle">Title Here</h2>
+            <p class="detail-desc" id="detailText">Details here...</p>
+            <button class="close-btn" onclick="closeDetail()">Back</button>
+        </div>
+    </div>
+
+    <script>
+        const cards = document.querySelectorAll('.card');
+        const detailView = document.getElementById('detailView');
+        const detailTitle = document.getElementById('detailTitle');
+        const detailText = document.getElementById('detailText');
+        const grid = document.getElementById('grid');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const title = card.getAttribute('data-title');
+                const text = card.getAttribute('data-details');
+
+                detailTitle.textContent = title;
+                detailText.textContent = text;
+
+                detailView.classList.add('active');
+                grid.style.opacity = '0.2';
+            });
+        });
+
+        function closeDetail() {
+            detailView.classList.remove('active');
+            grid.style.opacity = '1';
+        }
+    </script>
+</body>
+
+</html>

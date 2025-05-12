@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LinkBack Referral Page</title>
+  <style>
+   body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #c0b6e2, #d0b3e6, #c4daeb);
+  color: #0e0101;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+html {
+  height: 100%;
+}
+
+header {
+  padding: 1rem 2rem;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* Hide scrollbar for all browsers */
+main {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+  overflow-y: auto;
+}
+
+main::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari, Opera */
+}
+
+
+section {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="file"],
+textarea,
+select {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+}
+
+button {
+  margin-top: 1.5rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  background-color: #fff;
+  color: #bc77ed;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  background-color: #edf2f7;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+.request-item {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.request-item p {
+  margin: 0.5rem 0;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>LinkBack Referral Portal</h1>
+  </header>
+  <main>
+    <!-- Referral Request Form -->
+    <section>
+      <h2>Request a Referral</h2>
+      <form id="referralForm">
+        <label for="jobTitle">Job/Internship Title</label>
+        <input type="text" id="jobTitle" name="jobTitle" required />
+
+        <label for="companyName">Company Name</label>
+        <input type="text" id="companyName" name="companyName" required />
+
+        <label for="resume">Upload Resume</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required />
+
+        <label for="linkedin">LinkedIn Profile URL</label>
+        <input type="url" id="linkedin" name="linkedin" />
+
+        <label for="message">Personal Message</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+
+        <label for="alumni">Select Alumni</label>
+        <select id="alumni" name="alumni" required>
+          <option value="">-- Select Alumni --</option>
+          <option value="alumni1">John Doe - Google</option>
+          <option value="alumni2">Jane Smith - Microsoft</option>
+          <option value="alumni3">Alice Johnson - Amazon</option>
+        </select>
+
+        <button type="submit">Send Referral Request</button>
+      </form>
+    </section>
+
+    <!-- Student Dashboard -->
+    <section>
+      <h2>Your Referral Requests</h2>
+      <div class="dashboard" id="studentDashboard">
+        <!-- Referral requests will be displayed here -->
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const referralForm = document.getElementById('referralForm');
+    const studentDashboard = document.getElementById('studentDashboard');
+
+    referralForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const jobTitle = document.getElementById('jobTitle').value;
+      const companyName = document.getElementById('companyName').value;
+      const resume = document.getElementById('resume').files[0];
+      const linkedin = document.getElementById('linkedin').value;
+      const message = document.getElementById('message').value;
+      const alumni = document.getElementById('alumni').value;
+
+      if (!alumni) {
+        alert('Please select an alumni.');
+        return;
+      }
+
+      // Student dashboard entry
+      const studentItem = document.createElement('div');
+      studentItem.className = 'request-item';
+      studentItem.innerHTML = `
+        <p><strong>Job Title:</strong> ${jobTitle}</p>
+        <p><strong>Company:</strong> ${companyName}</p>
+        <p><strong>Resume:</strong> ${resume.name}</p>
+        <p><strong>LinkedIn:</strong> <a href="${linkedin}" target="_blank">${linkedin}</a></p>
+        <p><strong>Message:</strong> ${message}</p>
+        <p><strong>Status:</strong> Sent</p>
+      `;
+      studentDashboard.appendChild(studentItem);
+
+      referralForm.reset();
+    });
+  </script>
+</body>
+</html>
